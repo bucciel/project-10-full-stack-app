@@ -69,9 +69,11 @@ router.post('/users', async (req, res, next) => {
             res.status(400).end();        // if user can't be created, return 400 status
         }
     } catch (err) {
-        if (err.name === "sequelizeValidationError") {      // if email address already exists, don't allow new user to be created
+        if (err.name === 'This email address already exists.') {      // if email address already exists, don't allow new user to be created
             console.log('Validation error')
-            res.status(400).end();
+            res.status(400).json({
+                message: 'This email address already exists.'
+            });
         } else {
             console.log('Error 500 - Internal Server Error')
             next(err);

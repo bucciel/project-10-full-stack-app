@@ -103,11 +103,11 @@ router.put('/courses/:id', authenticateUser, async (req, res, next) => {
     try {
         let course = await Course.findByPk(req.params.id);         // validation for updating course
         if (course.userId === req.body.userId) {                   // if user owns course, they can update the course info
-            course.title = req.body.title;
-            course.description = req.body.description;
-            course.estimatedTime = req.body.estimatedTime;
-            course.materialsNeeded = req.body.materialsNeeded;
-            if (course.title && course.description) {
+            if (req.body.title && req.body.description) {
+                course.title = req.body.title;
+                course.description = req.body.description;
+                course.estimatedTime = req.body.estimatedTime;
+                course.materialsNeeded = req.body.materialsNeeded;
                 course = await course.update(req.body);
                 res.status(204).end();                             // if course is successfully updated, return 204 status  
             } else {
