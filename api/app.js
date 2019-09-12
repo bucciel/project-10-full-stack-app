@@ -8,9 +8,11 @@ const homeRoute = require('./routes/homeRoute');
 const usersRoute = require('./routes/usersRoute');
 const coursesRoute = require('./routes/coursesRoute');
 
+const cors = require('cors');  // import cors library
 const app = express();    // create the Express app
 const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';  // variable to enable global error logging
 
+app.use(cors());          // enable all cors requests
 app.use(express.json());  // set request body JSON parsing
 app.use(morgan('dev'));   // setup morgan which gives us http request logging
 
