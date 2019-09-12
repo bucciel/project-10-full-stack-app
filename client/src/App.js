@@ -11,9 +11,9 @@ import UserSignIn from './components/UserSignIn';
 import UserSignOut from './components/UserSignOut';
 import Header from './components/Header';
 
-import Error from './components/Error';
-import Forbidden from './components/Forbidden';
-import NotFound from './components/NotFound';
+// import Error from './components/Error';
+// import Forbidden from './components/Forbidden';
+// import NotFound from './components/NotFound';
 
 import withContext from './Context';
 import PrivateRoute from './PrivateRoute';
@@ -36,6 +36,7 @@ class App extends Component {     // renders application components and routes
           <Switch>
             <Route exact path="/" component={Courses} />
             <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />
+            <PrivateRoute exact path="/courses/:id/update" component={UpdateCourseWithContext} />
             <Route exact path="/courses/:id" component={CourseDetailWithContext} />
             <Route path="/signin" component={UserSignInWithContext} />
             <Route path="/signup" component={UserSignUpWithContext} />

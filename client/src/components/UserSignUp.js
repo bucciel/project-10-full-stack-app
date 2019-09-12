@@ -1,10 +1,8 @@
 /* Stateful class component */
-
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class UserSignUp extends Component {
-
     state = {
         firstName: '',
         lastName: '',
@@ -22,12 +20,16 @@ class UserSignUp extends Component {
         } = this.state;
 
         return (
-            <div class="bounds">
-                <div class="grid-33 centered signin">
+            <div className="bounds">
+                <div className="grid-33 centered signin">
                     <h1>Sign Up</h1>
-                    <div>
-                        <form>
-                            <div>
+                    <Form
+                        cancel={this.cancel}
+                        errors={errors}
+                        submit={this.submit}
+                        submitButtonText="Sign Up"
+                        elements={() => (
+                            <React.Fragment>
                                 <input
                                     id="firstName"
                                     name="firstName"
@@ -35,8 +37,6 @@ class UserSignUp extends Component {
                                     class=""
                                     placeholder="First Name"
                                     value={this.state.firstName} />
-                            </div>
-                            <div>
                                 <input
                                     id="lastName"
                                     name="lastName"
@@ -44,8 +44,6 @@ class UserSignUp extends Component {
                                     class=""
                                     placeholder="Last Name"
                                     value={this.state.lastName} />
-                            </div>
-                            <div>
                                 <input
                                     id="emailAddress"
                                     name="emailAddress"
@@ -53,40 +51,26 @@ class UserSignUp extends Component {
                                     class=""
                                     placeholder="Email Address"
                                     value={this.state.emailAddress} />
-                            </div>
-                            <div>
                                 <input id="password"
                                     name="password"
                                     type="password"
                                     class=""
                                     placeholder="Password"
                                     value={this.state.password} />
-                            </div>
-                            <div>
                                 <input id="confirmPassword"
                                     name="confirmPassword"
                                     type="password"
                                     class=""
                                     placeholder="Confirm Password"
                                     value={this.state.password} />
-                            </div>
-                            <div class="grid-100 pad-bottom">
-                                <button class="button" type="submit">Sign Up</button>
-                                <button class="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                    <p>&nbsp;</p>
-                    <p>Already have a user account? <a href="sign-in.html">Click here</a> to sign in!</p>
+                            </React.Fragment>
+                        )} />
+                    <p>
+                        Already have a user account? <Link to="/signin">Click here</Link> to sign in!
+                    </p>
                 </div>
             </div>
-        )
+        );
     }
-}
 
-
-
-
-
-
-export default UserSignUp;
+    export default UserSignUp;
