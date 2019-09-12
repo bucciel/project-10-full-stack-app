@@ -1,5 +1,4 @@
-/*
-//React import statement
+/* project 7 NotFound code
 import React, { Component } from 'react';
 
 class NotFound extends Component {      //Renders 404 error photo to user when requested course can't be found
