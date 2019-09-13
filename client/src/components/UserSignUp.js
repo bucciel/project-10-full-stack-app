@@ -91,6 +91,7 @@ class UserSignUp extends Component {
         });
     }
 
+    /* submit function */
     submit = () => {
         const { context } = this.props;
         const {
