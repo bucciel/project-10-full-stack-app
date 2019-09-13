@@ -1,6 +1,7 @@
 /* Stateful class component */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Form from './Form';
 
 class UserSignUp extends Component {
     state = {
@@ -8,7 +9,8 @@ class UserSignUp extends Component {
         lastName: '',
         emailAddress: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        errors: []
     }
     render() {
         const {
@@ -16,7 +18,8 @@ class UserSignUp extends Component {
             lastName,
             emailAddress,
             password,
-            confirmPassword
+            confirmPassword,
+            errors
         } = this.state;
 
         return (
@@ -34,43 +37,101 @@ class UserSignUp extends Component {
                                     id="firstName"
                                     name="firstName"
                                     type="text"
-                                    class=""
-                                    placeholder="First Name"
-                                    value={this.state.firstName} />
+                                    className=""
+                                    value={firstName}
+                                    onChange={this.change}
+                                    placeholder="First Name" />
                                 <input
                                     id="lastName"
                                     name="lastName"
                                     type="text"
-                                    class=""
-                                    placeholder="Last Name"
-                                    value={this.state.lastName} />
+                                    className=""
+                                    value={lastName}
+                                    onChange={this.change}
+                                    placeholder="Last Name" />
                                 <input
                                     id="emailAddress"
                                     name="emailAddress"
                                     type="text"
-                                    class=""
-                                    placeholder="Email Address"
-                                    value={this.state.emailAddress} />
+                                    className=""
+                                    value={emailAddress}
+                                    onChange={this.change}
+                                    placeholder="Email Address" />
                                 <input id="password"
                                     name="password"
                                     type="password"
-                                    class=""
-                                    placeholder="Password"
-                                    value={this.state.password} />
+                                    className=""
+                                    value={password}
+                                    onChange={this.change}
+                                    placeholder="Password" />
                                 <input id="confirmPassword"
                                     name="confirmPassword"
                                     type="password"
-                                    class=""
-                                    placeholder="Confirm Password"
-                                    value={this.state.password} />
+                                    className=""
+                                    value={confirmPassword}
+                                    onChange={this.change}
+                                    placeholder="Confirm Password" />
                             </React.Fragment>
                         )} />
-                    <p>
-                        Already have a user account? <Link to="/signin">Click here</Link> to sign in!
-                    </p>
+                    <p> Already have a user account? <Link to="/signin">Click here</Link> to sign in! </p>
                 </div>
             </div>
         );
     }
 
-    export default UserSignUp;
+    /* handles state change */
+    change = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState(() => {
+            return {
+                [name]: value
+            };
+        });
+    }
+
+    submit = () => {
+        const { context } = this.props;
+        const {
+            firstName,
+            lastName,
+            emailAddress,
+            password,
+            confirmPassword
+        } = this.state;
+
+
+        /* creates user */
+        const user = {
+            firstName,
+            lastName,
+            emailAddress,
+            password,
+            confirmPassword
+        };
+
+        context.data.createUser(user)
+            .then(errors => {
+                if (errors.length) {
+                    this.setState({ errors });
+                } else {
+                    context.actions.signIn(emailAddress, password)
+                        .then(() => {
+                            this.props.history.push('/authenticated');
+                        });
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                this.props.history.push('/error');
+            });
+    }
+
+    cancel = () => {
+        this.props.history.push('/');
+    }
+
+}
+
+export default UserSignUp;
