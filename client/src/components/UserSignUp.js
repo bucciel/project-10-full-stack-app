@@ -22,6 +22,7 @@ class UserSignUp extends Component {
             errors
         } = this.state;
 
+        /* returns input fields to be used in each form */
         return (
             <div className='bounds'>
                 <div className='grid-33 centered signin'>
@@ -91,7 +92,7 @@ class UserSignUp extends Component {
         });
     }
 
-    /* submit function */
+    /* submit function that creates a new user and sends their credentials to the Express server */
     submit = () => {
         const { context } = this.props;
         const {
@@ -102,7 +103,6 @@ class UserSignUp extends Component {
             confirmPassword
         } = this.state;
 
-
         /* creates user */
         const user = {
             firstName,
@@ -112,6 +112,7 @@ class UserSignUp extends Component {
             confirmPassword
         };
 
+        /* returns a promise: either an array of errors (sent from the API if the response is 400), or an empty array (if the response is 201) */
         context.data.createUser(user)
             .then(errors => {
                 if (errors.length) {
@@ -123,16 +124,16 @@ class UserSignUp extends Component {
                         });
                 }
             })
-            .catch((err) => {
+            .catch((err) => {        // handles a rejected promise returned by createUser()
                 console.log(err);
-                this.props.history.push('/error');
+                this.props.history.push('/error');    // redirects url to error route
             });
     }
 
+    /* cancel function */
     cancel = () => {
-        this.props.history.push('/');
+        this.props.history.push('/');    // redirects to main page of app
     }
-
 }
 
 export default UserSignUp;

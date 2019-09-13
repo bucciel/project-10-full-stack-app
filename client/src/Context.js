@@ -4,7 +4,7 @@ import Data from './Data';
 
 const Context = React.createContext();
 
-/* create provider for context */
+/* provides the application state and any actions or event handlers that need to be shared between components */
 export class Provider extends Component {
 
     state = {
@@ -18,7 +18,7 @@ export class Provider extends Component {
 
     render() {
         const { authenticatedUser } = this.state;
-        const value = {
+        const value = {             // value object provides the utility methods of the class Data
             authenticatedUser,
             data: this.data,
             actions: {
@@ -26,7 +26,7 @@ export class Provider extends Component {
                 signOut: this.signOut
             },
         };
-        return (
+        return (                              //  passes context to provider 
             <Context.Provider value={value}>
                 {this.props.children}
             </Context.Provider>
@@ -61,10 +61,10 @@ export class Provider extends Component {
 export const Consumer = Context.Consumer;
 
 /**
- * A higher-order component that wraps the provided component in a Context Consumer component.
- * @param {class} Component - A React component.
- * @returns {function} A higher-order component.
- */
+ * a higher-order component that wraps the provided component in a Context Consumer component
+ * @param {class} Component - a React component
+ * @returns {function} - a higher-order component
+*/
 
 export default function withContext(Component) {
     return function ContextComponent(props) {

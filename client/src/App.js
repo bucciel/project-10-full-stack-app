@@ -26,7 +26,8 @@ const CourseDetailWithContext = withContext(CourseDetail);
 const CreateCourseWithContext = withContext(CreateCourse);
 const UpdateCourseWithContext = withContext(UpdateCourse);
 
-class App extends Component {     // renders application components and routes
+/* renders application components and routes */
+class App extends Component {
 
   render() {
     return (
