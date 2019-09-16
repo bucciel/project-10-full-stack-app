@@ -48,7 +48,7 @@ router.get('/users', authenticateUser, async (req, res) => {
         req.body.id,
         {
             attributes: {
-                exclude: ['password', 'createdAt', 'updatedAt'],    // filters out select user attributes
+                exclude: ['createdAt', 'updatedAt'],    // filters out select user attributes
             },
         }
     );
