@@ -75,7 +75,7 @@ class UserSignIn extends Component {
                     });
                 } else {        // if user object is returned, navigate user to the /authenticated route 
                     this.props.history.push(from);
-                    console.log(`Success! ${username} is now signed in!`);
+                    console.log('Success! You\'re now signed in!');
                 }
             })
             .catch((error) => {     // handle rejected promise returned by signIn()
@@ -84,7 +84,7 @@ class UserSignIn extends Component {
             });
     }
     cancel = () => {
-        this.props.history.push('/');
+        this.props.history.push('/');   // redirects user back to the home route upon clicking 'Cancel' button
     }
 }
 
