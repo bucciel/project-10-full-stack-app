@@ -11,7 +11,7 @@ class Courses extends Component {
     async componentDidMount() {
         const res = await this.props.context.data.api('/courses', 'GET');
         if (res.status === 200) {
-            return res.json().then(courses => this.setState({ courses: courses }));     // display course links
+            return res.json().then(courses => this.setState({ courses: courses }));     // display existing courses
         } else if (res.status === 500) {
             window.location.href = '/error';    // display 500 error status page
         } else {
@@ -19,6 +19,7 @@ class Courses extends Component {
         }
     }
 
+    /* render and return courses */
     render() {
         const { courses } = this.state;
         return (

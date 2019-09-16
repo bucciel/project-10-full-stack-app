@@ -9,7 +9,7 @@ import UserSignUp from './components/UserSignUp';
 import UserSignIn from './components/UserSignIn';
 // import UserSignOut from './components/UserSignOut';
 import Courses from './components/Courses';
-// import CourseDetail from './components/CourseDetail';
+import CourseDetail from './components/CourseDetail';
 // import CreateCourse from './components/CreateCourse';
 // import UpdateCourse from './components/UpdateCourse';
 
@@ -27,7 +27,7 @@ const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 // const UserSignOutWithContext = withContext(UserSignOut);
 const CoursesWithContext = withContext(Courses);
-// const CourseDetailWithContext = withContext(CourseDetail);
+const CourseDetailWithContext = withContext(CourseDetail);
 // const CreateCourseWithContext = withContext(CreateCourse);
 // const UpdateCourseWithContext = withContext(UpdateCourse);
 
@@ -45,10 +45,10 @@ class App extends Component {
             <PrivateRoute path="/authenticated" component={AuthWithContext} />
             {/* 
             <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />
-            <PrivateRoute exact path="/courses/:id/update" component={UpdateCourseWithContext} />
-            <Route exact path="/courses/:id" component={CourseDetailWithContext} /> */}
-            <Route path="/signin" component={UserSignInWithContext} />
-            <Route path="/signup" component={UserSignUpWithContext} />
+            <PrivateRoute exact path="/courses/:id/update" component={UpdateCourseWithContext} /> */}
+            <Route exact path="/courses/:id" component={CourseDetailWithContext} />
+            {/* <Route path="/signin" component={UserSignInWithContext} />
+            <Route path="/signup" component={UserSignUpWithContext} /> */}
             {/*
             <Route path="/signout" component={UserSignOutWithContext} /> */}
           </Switch>
