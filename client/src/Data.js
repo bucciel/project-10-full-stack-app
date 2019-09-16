@@ -2,10 +2,11 @@ import config from './config';
 
 /* methods to create, sign-up, and authenticate the user */
 export default class Data {
-    api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {      // GET and POST requests to REST API
-        const url = config.apiBaseUrl + path;           // configures request path using the base URL defined in config.js
+    /* GET and POST requests to REST API */
+    api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {    // parameters initialized with default values in case no values or undefined gets passed
+        const url = config.apiBaseUrl + path;     // configures request path using the base URL defined in config.js
 
-        const options = {               // sends a request with the HTTP method as well as the request headers and a stringified body
+        const options = {     // sends a request with the HTTP method as well as the request headers and a stringified body
             method,
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
@@ -16,9 +17,9 @@ export default class Data {
             options.body = JSON.stringify(body);
         }
 
-        if (requiresAuth) {
-            const encodedCredentials = btoa(`${credentials.emailAddress}:${credentials.password}`);
-            options.headers['Authorization'] = `Basic ${encodedCredentials}`;
+        if (requiresAuth) {       // check if authorization is required
+            const encodedCredentials = btoa(`${credentials.emailAddress}:${credentials.password}`);   // encode the user credentials with btoa() method which creates a base-64 encoded ASCII string from a "string" of data
+            options.headers['Authorization'] = `Basic ${encodedCredentials}`;   // set the HTTP Authorization request header to the Basic Authentication type
         }
         return fetch(url, options);
     }
