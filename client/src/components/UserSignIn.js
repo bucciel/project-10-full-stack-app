@@ -62,24 +62,25 @@ class UserSignIn extends Component {
     }
 
     /* submit function */
-    submit = () => {
+    submit = () => {        // log in an authenticated user upon submitting the 'Sign In' form
         const { context } = this.props;
         const { from } = this.props.location.state || { from: { pathname: '/authenticated' } };
         const { emailAddress, password } = this.state;
 
-        context.actions.signIn(emailAddress, password)
+        context.actions.signIn(emailAddress, password)    // accepts two arguments to log in a registered user
             .then((user) => {
-                if (user === null) {
+                if (user === null) {        // if returned promise value is null, return error validation message
                     this.setState(() => {
                         return { errors: ['Sign-in was unsuccessful'] };
                     });
-                } else {
+                } else {        // if user object is returned, navigate user to the /authenticated route 
                     this.props.history.push(from);
+                    console.log(`Success! ${username} is now signed in!`);
                 }
             })
-            .catch((error) => {
+            .catch((error) => {     // handle rejected promise returned by signIn()
                 console.error(error);
-                this.props.history.push('/error');
+                this.props.history.push('/error');    // navigate user from /signin to /error
             });
     }
     cancel = () => {

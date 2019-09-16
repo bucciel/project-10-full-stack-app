@@ -26,7 +26,7 @@ export default class Data {
 
     /* GET request to the /users endpoint and returns a JSON object containing user credentials */
     async getUser(emailAddress, password) {
-        const response = await this.api(`/users`, 'GET', null, true, { emailAddress, password });
+        const response = await this.api(`/users`, 'GET', null, true, { emailAddress, password });   // calls api() method to return authenticated user
         if (response.status === 200) {
             return response.json().then(data => data);
         }

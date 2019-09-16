@@ -21,12 +21,12 @@ export class Provider extends Component {
         const value = {             // value object provides the utility methods of the class Data
             authenticatedUser,
             data: this.data,
-            actions: {
+            actions: {              // add the 'actions' property and object
                 signIn: this.signIn,
                 signOut: this.signOut
             },
         };
-        return (                              //  passes context to provider 
+        return (                              // passes context to provider 
             <Context.Provider value={value}>
                 {this.props.children}
             </Context.Provider>
@@ -35,7 +35,7 @@ export class Provider extends Component {
 
     /* user sign-in */
     signIn = async (username, password) => {
-        const user = await this.data.getUser(username, password);
+        const user = await this.data.getUser(username, password);   // calls getUser() in Data.js, which makes a GET request to the protected /users route on the server & returns user data
         if (user !== null) {
             this.setState(() => {
                 return {
