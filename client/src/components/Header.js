@@ -9,15 +9,15 @@ class Header extends React.PureComponent {
         return (
             <div className="header">
                 <div className="bounds">
-                    <h1 className="header--logo">Home Page</h1>
+                    <Link className="header--logo" to="/">Course List</Link>
                     <nav>
-                        {authUser ? (
-                            <React.Fragment>
+                        {authUser ? (   // ternary operator to render content representing the current state
+                            <React.Fragment>   {/* if there is an authenticated user in state, render a "Welcome {authUser.name}" message */}
                                 <span>Welcome, {authUser.firstName} {authUser.lastName}!</span>
                                 <Link to="/signout">Sign Out</Link>
                             </React.Fragment>
                         ) : (
-                                <React.Fragment>
+                                <React.Fragment>    {/* if the authenticatedUser state is null, render the default navigation with "Sign Up" and "Sign In" links */}
                                     <Link className="signup" to="/signup">Sign Up</Link>
                                     <Link className="signin" to="/signin">Sign In</Link>
                                 </React.Fragment>

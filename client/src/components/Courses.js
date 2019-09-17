@@ -1,13 +1,12 @@
 /* Stateful class component */
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
 
 class Courses extends Component {
     state = {
         courses: []
     };
 
-    /* fetch courses data from Rest API */
+    /* GET courses data from Rest API */
     async componentDidMount() {
         const res = await this.props.context.data.api('/courses', 'GET');
         if (res.status === 200) {

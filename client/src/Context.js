@@ -7,7 +7,7 @@ const Context = React.createContext();
 /* provides the application state and any actions or event handlers that need to be shared between components */
 export class Provider extends Component {
 
-    state = {
+    state = {       // if there is no authenticated user, display the default header, otherwise, display the user name in the header 
         authenticatedUser: Cookies.getJSON('authenticatedUser') || null
     };
 
@@ -34,8 +34,8 @@ export class Provider extends Component {
     }
 
     /* user sign-in */
-    signIn = async (username, password) => {
-        const user = await this.data.getUser(username, password);   // calls getUser() in Data.js, which makes a GET request to the protected /users route on the server & returns user data
+    signIn = async (emailAddress, password) => {
+        const user = await this.data.getUser(emailAddress, password);   // calls getUser() in Data.js, which makes a GET request to the protected /users route on the server & returns user data
         if (user !== null) {
             this.setState(() => {
                 return {

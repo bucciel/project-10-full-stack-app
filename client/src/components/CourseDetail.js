@@ -9,7 +9,7 @@ class CourseDetail extends Component {
         isUserAuth: null,
     };
 
-    /* FETCH course details from REST API */
+    /* GET course details from REST API */
     async componentDidMount() {
         const res = await this.props.context.data.api(`/courses/${this.props.match.params.id}`, 'GET');    // calls api() method to return details for a specified course
         if (res.status === 200) {
@@ -31,7 +31,7 @@ class CourseDetail extends Component {
         }
     }
 
-    /* Delete course handler */
+    /* DELETE course handler */
     handleDelete = async (e) => {
         const { context } = this.props;
         const authUser = context.authenticatedUser;
@@ -52,7 +52,7 @@ class CourseDetail extends Component {
     }
 
     render() {
-        const course = this.state.course[0];
+        const course = this.state.course;
         const user = this.state.isUserAuth;
 
         return (
