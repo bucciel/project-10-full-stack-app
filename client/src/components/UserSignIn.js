@@ -23,8 +23,8 @@ class UserSignIn extends Component {
     }
 
     /* submit function */
-    submit = (e) => {        // log in an authenticated user upon submitting the 'Sign In' form
-        e.preventDefault();
+    submit = () => {        // log in an authenticated user upon submitting the 'Sign In' form
+        //e.preventDefault();
         const { context } = this.props;
         const { from } = this.props.location.state || { from: { pathname: '/' } };
         const { emailAddress, password } = this.state;
@@ -87,54 +87,6 @@ class UserSignIn extends Component {
                 </div>
             </div>
         );
-
-        // return (
-        //     <div className='bounds'>
-        //         <div className='grid-33 centered signin'>
-        //             <h1>Sign In</h1>
-        //             {
-        //                 this.state.errors.length ?
-        //                     <div>
-        //                         <div className='validation-errors'>
-        //                             <ul>
-        //                                 {this.state.errors.map((error, i) => <li key={i}>{error}</li>)}
-        //                             </ul>
-        //                         </div>
-        //                     </div> : null
-        //             }
-        //             <div>
-        //                 <form onSubmit={this.submit}>
-        //                     <div>
-        //                         <input
-        //                             id='emailAddress'
-        //                             name='emailAddress'
-        //                             type='text'
-        //                             className=''
-        //                             placeholder='Email Address'
-        //                             onChange={this.change}
-        //                             value={emailAddress} />
-        //                     </div>
-        //                     <div>
-        //                         <input
-        //                             id='password'
-        //                             name='password'
-        //                             type='password'
-        //                             className=''
-        //                             placeholder='Password'
-        //                             onChange={this.change}
-        //                             value={password} />
-        //                     </div>
-        //                     <div className='grid-100 pad-bottom'>
-        //                         <button className='button' type='submit'>Sign In</button>
-        //                         <Link className='button button-secondary' to='/'>Cancel</Link>
-        //                     </div>
-        //                 </form>
-        //             </div>
-        //             <p>&nbsp;</p>
-        //             <p>Don't have a user account? <a href='/signup'>Click here</a> to sign up!</p>
-        //         </div>
-        //     </div>
-        // );
     }
 }
 

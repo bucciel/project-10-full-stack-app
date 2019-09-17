@@ -63,13 +63,14 @@ export class Provider extends Component {
         };
     }
 
-    /* create  course for associated user */
+    /* create course for associated user */
     createCourse = async (course, { emailAddress, password }) => {
         const createdCourse = await this.data.createCourse(course, { emailAddress, password });
         if (createdCourse) {
             return createdCourse;
         };
     }
+
     /* user sign-out */
     signOut = () => {
         this.setState({ authenticatedUser: null });
