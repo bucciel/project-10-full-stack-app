@@ -8,22 +8,28 @@ const Context = React.createContext();
 export class Provider extends Component {
 
     state = {       // if there is no authenticated user, display the default header, otherwise, display the user name in the header 
-        authenticatedUser: Cookies.getJSON('authenticatedUser') || null
+        authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
+        userPassword: Cookies.getJSON('userPassword') || null
     };
 
+    /* create new instances of the data module */
     constructor() {
         super();
         this.data = new Data();
     }
 
     render() {
-        const { authenticatedUser } = this.state;
+        const { authenticatedUser, userPassword } = this.state;
         const value = {             // value object provides the utility methods of the class Data
             authenticatedUser,
+            userPassword,
             data: this.data,
             actions: {              // add the 'actions' property and object
                 signIn: this.signIn,
-                signOut: this.signOut
+                signOut: this.signOut,
+                updateCourse: this.updateCourse,
+                createCourse: this.createCourse,
+                deleteCourse: this.deleteCourse
             },
         };
         return (                              // pass context to provider 
@@ -40,16 +46,30 @@ export class Provider extends Component {
             this.setState(() => {
                 return {
                     authenticatedUser: user,
+                    userPassword: password
                 };
             });
-            const cookieOptions = {
-                expires: 1      // expries in 1 day
-            };
-            Cookies.set('authenticatedUser', JSON.stringify(user), { cookieOptions });
+            Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+            Cookies.set('userPassword', JSON.stringify(password), { expires: 1 });
         }
         return user;
     }
 
+    /* update course for associated user */
+    updateCourse = async (course, id, { emailAddress, password }) => {
+        const updatedCourse = await this.data.updateCourseDetail(course, id, { emailAddress, password });
+        if (updatedCourse) {
+            return updatedCourse
+        };
+    }
+
+    /* create  course for associated user */
+    createCourse = async (course, { emailAddress, password }) => {
+        const createdCourse = await this.data.createCourse(course, { emailAddress, password });
+        if (createdCourse) {
+            return createdCourse;
+        };
+    }
     /* user sign-out */
     signOut = () => {
         this.setState({ authenticatedUser: null });
