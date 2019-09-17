@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 class CourseDetail extends Component {
     state = {
         course: [],
+        userInfo: [],
         isUserAuth: null,
     };
 
@@ -20,7 +21,11 @@ class CourseDetail extends Component {
                 if (authUser && authUser.id === course[0].userId) {     // if user owns the requested course, allow access
                     user = true;
                 }
-                this.setState({ course: course, isUserAuth: user });
+                this.setState({
+                    course: course.course,
+                    userInfo: course.course.user,
+                    isUserAuth: user,
+                });
             });
         } else if (res.status === 404) {
             window.location.href = '/notfound';
@@ -52,34 +57,35 @@ class CourseDetail extends Component {
     }
 
     render() {
-        const course = this.state.course;
-        const user = this.state.isUserAuth;
+        const { course } = this.state;
+        const { userInfo } = this.state;
+        const { isUserAuth } = this.state;
 
         return (
             <div>
-                {this.state.course.length ?
+                {this.state.course ? (
                     <div>
                         <div className="actions--bar">
                             <div className="bounds">
                                 <div className="grid-100">
-                                    {user ?
+                                    {isUserAuth ? (
                                         <span>
-                                            <Link className="button" to={`/courses/${this.props.match.params.id}/update`}>Update Course</Link>
-                                            <Link onClick={this.handleDelete} to='#' className="button">Delete Course</Link>
+                                            <Link className="button" to={`/courses/${this.props.match.params.id}/update`}> Update Course </Link>
+                                            <Link onClick={this.handleDelete} to="#" className="button"> Delete Course </Link>
                                         </span>
-                                        : null
-                                    }
-                                    <Link className="button button-secondary" to="/">Return to Courses</Link>
+                                    ) : null}
+                                    <Link className="button button-secondary" to="/"> Return to List </Link>
                                 </div>
                             </div>
                         </div>
-
                         <div className="bounds course--detail">
                             <div className="grid-66">
                                 <div className="course--header">
                                     <h4 className="course--label">Course</h4>
                                     <h3 className="course--title">{course.title}</h3>
-                                    <p>By {course.student.firstName} {course.student.lastName}</p>
+                                    <p>
+                                        By {userInfo.firstName} {userInfo.lastName}
+                                    </p>
                                 </div>
                                 <div className="course--description">
                                     <ReactMarkdown source={course.description} />
@@ -103,12 +109,11 @@ class CourseDetail extends Component {
                             </div>
                         </div>
                     </div>
-                    :
-                    <h3>Loading Course Information..</h3>
-                }
+                ) : (
+                        <h3>Loading Course Information..</h3>
+                    )}
             </div>
         );
     }
 }
-
 export default CourseDetail;
