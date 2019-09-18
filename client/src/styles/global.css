@@ -201,13 +201,15 @@ svg {
 
 /* line 5, ../sass/global.sass */
 body {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Book Antiqua", Serif;
   background: #fff;
+  background-image: url(./hp.png);
+  background-size: cover;
 }
 
-/* line 13, ../sass/global.sass */
+/* line 13, ../sass/global.sass */ 
 .header {
-  background: #57496e;
+  background: #3d0d57;  
   padding: 20px 0;
   margin-bottom: 30px;
 }
@@ -221,7 +223,7 @@ body {
 }
 /* line 23, ../sass/global.sass */
 .header--logo a {
-  color: rgba(255, 255, 255, 0.5);
+  color:#ededed
 }
 /* line 25, ../sass/global.sass */
 .header--logo a:hover {
@@ -233,7 +235,7 @@ body {
 }
 /* line 29, ../sass/global.sass */
 .header--logo .chevron {
-  fill: rgba(255, 255, 255, 0.3);
+  fill: rgba(255, 255, 255, 0.596);
   width: 7px;
   height: auto;
   margin: 0 10px;
@@ -243,14 +245,14 @@ body {
   float: right;
   margin-top: 3px;
 }
-/* line 37, ../sass/global.sass */
+/* line 37, ../sass/global.sass */ 
 .header nav a {
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff;
   margin-left: 20px;
 }
 /* line 40, ../sass/global.sass */
 .header nav a:hover {
-  color: #fff;
+  color: #c3a3ff;
 }
 
 /* line 44, ../sass/global.sass */
@@ -277,12 +279,13 @@ body {
 /* line 57, ../sass/global.sass */
 h1 {
   font-size: 36px;
+  color: #fff;
   margin-bottom: 20px;
 }
 
 /* line 61, ../sass/global.sass */
 a {
-  color: #7c689b;
+  color: #fff;
   cursor: pointer;
   text-decoration: none;
   -webkit-transition: color 0.2s;
@@ -294,7 +297,8 @@ a {
 
 /* line 66, ../sass/global.sass */
 p {
-  font-family: "Cousine";
+  font-family: "Book Antiqua";
+  font-size: 17px;
   margin-bottom: 30px;
 }
 
@@ -339,7 +343,7 @@ p {
 
 /* line 102, ../sass/global.sass */
 .course--module {
-  background: #7c689b;
+  background: #250536;
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 30px;
@@ -365,16 +369,16 @@ p {
 }
 /* line 116, ../sass/global.sass */
 .course--label {
-  font-family: "Cousine";
-  font-size: 14px;
+  font-family: "Book Antiqua";
+  font-size: 16px;
   font-weight: 100;
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff;
   margin-bottom: 10px;
   font-weight: normal;
 }
 /* line 123, ../sass/global.sass */
 .course--title {
-  font-size: 18px;
+  font-size: 20px;
   color: #fff;
 }
 /* line 126, ../sass/global.sass */
@@ -515,7 +519,7 @@ p {
 .course--description h2,
 .course--description h3 {
   font-family: "Work Sans", sans-serif;
-  color: #222;
+  color: #fff;;
   margin-bottom: 30px;
 }
 /* line 235, ../sass/global.sass */

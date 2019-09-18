@@ -18,7 +18,7 @@ class CourseDetail extends Component {
                 const { context } = this.props;
                 const authUser = context.authenticatedUser;
                 let user = null;
-                if (authUser && authUser.id === course[0].userId) {     // if user owns the requested course, allow access
+                if (authUser && authUser.id === course.userId) {     // if user owns the requested course, allow access
                     user = true;
                 }
                 this.setState({
