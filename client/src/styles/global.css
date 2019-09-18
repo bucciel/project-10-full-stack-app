@@ -203,7 +203,7 @@ svg {
 body {
   font-family: "Book Antiqua", Serif;
   background: #fff;
-  background-image: url(./hp.png);
+  background-image: url(./hogwarts.jpg);
   background-size: cover;
 }
 
@@ -255,10 +255,9 @@ body {
   color: #c3a3ff;
 }
 
-/* line 44, ../sass/global.sass */
+/* line 44, ../sass/global.sass */  /*bar behind update/delete/return buttons*/
 .actions--bar {
-  border-bottom: 1px solid #d5f9fe;
-  background: #f8feff;
+  background: transparent;
   padding: 20px 0;
   margin-top: -30px;
 }
@@ -341,9 +340,9 @@ p {
   margin: 0 auto;
 }
 
-/* line 102, ../sass/global.sass */
+/* line 102, ../sass/global.sass */ /*main course page blocks*/
 .course--module {
-  background: #250536;
+  background: #3d0d57;
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 30px;
@@ -370,7 +369,7 @@ p {
 /* line 116, ../sass/global.sass */
 .course--label {
   font-family: "Book Antiqua";
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 100;
   color: #fff;
   margin-bottom: 10px;
@@ -388,14 +387,14 @@ p {
   text-decoration: none;
   border: 0;
 }
-/* line 133, ../sass/global.sass */
+/* line 133, ../sass/global.sass */   /*create course module*/
 .course--add--module {
-  background: #eee;
+  background: #a3508d;
   text-align: center;
 }
-/* line 137, ../sass/global.sass */
+/* line 137, ../sass/global.sass */   /*create course text hover*/
 .course--add--module:hover .course--add--title {
-  color: #444;
+  color: #3d0d57;
 }
 /* line 139, ../sass/global.sass */
 .course--add--module:hover .add {
@@ -403,7 +402,7 @@ p {
 }
 /* line 141, ../sass/global.sass */
 .course--add--title {
-  color: #999;
+  color: white;
   display: inline-block;
   font-size: 18px;
   position: absolute;
@@ -419,7 +418,7 @@ p {
   width: 13px;
   height: auto;
   margin: 0 5px 0 0;
-  fill: #999;
+  fill: white;
 }
 /* line 159, ../sass/global.sass */
 .course--detail {
