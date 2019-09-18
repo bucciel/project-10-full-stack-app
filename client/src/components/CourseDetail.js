@@ -43,11 +43,13 @@ class CourseDetail extends Component {
         const emailAddress = authUser.emailAddress;
         const password = authUser.password;
 
-        if (window.confirm('Are you sure you want to delete this course ?')) {
+        if (window.confirm('Are you sure you want to delete this course?')) {
             const res = await context.data.api(`/courses/${this.props.match.params.id}`, 'DELETE', null, true, { emailAddress, password });  // calls api() method to delete course
             if (res.status === 204) {
                 window.location.href = '/';
                 return [];
+            } else if (res.status === 403) {
+                window.location.href = '/forbidden';
             } else if (res.status === 500) {
                 window.location.href = '/error';
             } else {

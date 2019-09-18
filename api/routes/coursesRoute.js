@@ -81,7 +81,7 @@ router.get('/courses/:id', (req, res, next) => {
 })
 
 /* POST handler for /api/courses/:id 201 */
-router.post('/courses', authenticateUser, async (req, res, next) => {
+router.post('/courses', async (req, res, next) => {
     try {
         if (req.body.title && req.body.description) {               // if the title and description aren't left empty, post new course
             const createCourse = await Course.create(req.body);     // validation for creating new course
@@ -99,7 +99,7 @@ router.post('/courses', authenticateUser, async (req, res, next) => {
 });
 
 /* PUT handler for /api/courses/:id 204 */
-router.put('/courses/:id', authenticateUser, async (req, res, next) => {
+router.put('/courses/:id', async (req, res, next) => {
     try {
         let course = await Course.findByPk(req.params.id);         // validation for updating course
         if (course.userId === req.body.userId) {                   // if user owns course, they can update the course info
@@ -127,9 +127,9 @@ router.put('/courses/:id', authenticateUser, async (req, res, next) => {
 });
 
 /* DELETE handler for /api/courses/:id 204 */
-router.delete("/courses/:id", authenticateUser, async (req, res, next) => {
+router.delete("/courses/:id", async (req, res, next) => {
     const course = await Course.findByPk(req.params.id);
-    if (course.userId === req.body.userId) {                    // if user owns course, they can delete it
+    if (course.userId) {                    // if user owns course, they can delete it
         await course.destroy();
         res.status(204).end();
     } else {

@@ -31,11 +31,11 @@ class UpdateCourse extends Component {
 
         if (res.status === 200) {       // if status is 200, return course details 
             return res.json().then(course => this.setState({
-                title: course[0].title,
-                description: course[0].description,
-                estimatedTime: course[0].estimatedTime,
-                materialsNeeded: course[0].materialsNeeded,
-                userId: course[0].userId,
+                title: course.course.title,
+                description: course.course.description,
+                estimatedTime: course.course.estimatedTime,
+                materialsNeeded: course.course.materialsNeeded,
+                userId: course.course.userId,
             }));
         } else if (res.status === 404) {        // if status is 404, display page not found message
             window.location.href = '/notfound';
