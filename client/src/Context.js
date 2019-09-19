@@ -49,6 +49,7 @@ export class Provider extends Component {
                     userPassword: password
                 };
             });
+            /* set cookies to maintain user's login information if they navigate away from the page */
             Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
             Cookies.set('userPassword', JSON.stringify(password), { expires: 1 });
         }
