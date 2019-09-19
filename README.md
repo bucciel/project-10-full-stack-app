@@ -4,6 +4,15 @@ This project uses React to create a client for my existing school database REST 
 
 This project has been styled with a Harry Potter theme, in order to maintain the themed courses and users please refrain from running `npm run seed`. 
 
+User information:
+- Harry Potter | email: `harry@potter.com` | password: `harrypassword`
+- Hermione Granger | email: `hermione@granger.com` | password: `hemionepassword`
+- Ron Weasley | email: `ron@weasley.com` | password: `ronpassword`
+
+Original user information if `npm run seed` is used:
+- Joe Smith | email: `joe@smith.com` | password: `joepassword`
+- Sally Jones | email: `sally@jones.com` | password: `sallypassword`
+
 In order to run this program, you need to navigate to the api folder and client folder in seperate terminals:
 - `cd api`
 - `npm install` 
