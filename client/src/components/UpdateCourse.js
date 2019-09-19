@@ -74,7 +74,7 @@ class UpdateCourse extends Component {
 
         } else if (res.status === 400) {    // if status is 400, display error message
             this.setState({
-                errors: ["Please check that all fields are filled in correctly"]
+                errors: ['Please check that all fields are filled in correctly']
             })
             return;
         } else if (res.status === 401 || res.status === 403) {      // if status is 401 or 403, display forbidden page

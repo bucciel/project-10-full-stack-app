@@ -27,6 +27,8 @@ class CourseDetail extends Component {
                     isUserAuth: user,
                 });
             });
+        } else if (res.status === 403) {
+            window.location.href = '/forbidden';
         } else if (res.status === 404) {
             window.location.href = '/notfound';
         } else if (res.status === 500) {

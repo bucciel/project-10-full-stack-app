@@ -69,9 +69,9 @@ router.post('/users', async (req, res, next) => {
             res.status(400).end();        // if user can't be created, return 400 status
         }
     } catch (err) {
-        if (err.name === 'This email address already exists.') {      // if email address already exists, don't allow new user to be created
+        if (err.message === 'This email address already exists.') {      // if email address already exists, don't allow new user to be created
             console.log('Validation error')
-            res.status(400).json({
+            res.status(403).json({
                 message: 'This email address already exists.'
             });
         } else {

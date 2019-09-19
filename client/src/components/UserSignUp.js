@@ -44,6 +44,7 @@ class UserSignUp extends Component {
             })
             return;
         }
+
         if (password !== confirmPassword) {     // display error message if passwords don't match
             this.setState({
                 errors: ['The entered passwords do not match']
@@ -61,19 +62,22 @@ class UserSignUp extends Component {
 
         /* returns a promise: either an array of errors (sent from the API if the response is 400), or an empty array (if the response is 201) */
         context.data.createUser(user)
-            .then(errors => {
-                if (errors.length) {
-                    this.setState({ errors });
+            .then(res => {
+                if (res.status === 500) {
+                    this.props.history.push('/error');    // redirects url to error route
                 } else {
                     context.actions.signIn(emailAddress, password)
                         .then(() => {
-                            this.props.history.push('/authenticated');
+                            this.props.history.push('/');
                         });
                 }
             })
             .catch((err) => {        // handles a rejected promise returned by createUser()
                 console.log(err);
-                this.props.history.push('/error');    // redirects url to error route
+                this.setState({
+                    errors: ['That email is already being used.']
+                })
+                // this.props.history.push('/error');    // redirects url to error route
             });
     }
 
