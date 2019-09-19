@@ -12,6 +12,76 @@ class UserSignUp extends Component {
         confirmPassword: '',
         errors: []
     }
+
+    /* handles state change */
+    change = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState(() => {
+            return {
+                [name]: value
+            };
+        });
+    }
+
+    /* submit function that creates a new user and sends their credentials to the Express server */
+    submit = () => {
+        const { context } = this.props;
+        const {
+            firstName,
+            lastName,
+            emailAddress,
+            password,
+            confirmPassword
+        } = this.state;
+
+        let user = {};
+        /* check that all form fields are filled out, if not, display error message */
+        if (firstName === '' || lastName === '' || emailAddress === '' || password === '' || confirmPassword === '') {
+            this.setState({
+                errors: ['One or more fields are missing information, please check that all fields are filled out correctly']
+            })
+            return;
+        }
+        if (password !== confirmPassword) {     // display error message if passwords don't match
+            this.setState({
+                errors: ['The entered passwords do not match']
+            })
+            return;
+
+        } else {        // otherwise set properties for user
+            user = {
+                firstName,
+                lastName,
+                emailAddress,
+                password
+            };
+        }
+
+        /* returns a promise: either an array of errors (sent from the API if the response is 400), or an empty array (if the response is 201) */
+        context.data.createUser(user)
+            .then(errors => {
+                if (errors.length) {
+                    this.setState({ errors });
+                } else {
+                    context.actions.signIn(emailAddress, password)
+                        .then(() => {
+                            this.props.history.push('/authenticated');
+                        });
+                }
+            })
+            .catch((err) => {        // handles a rejected promise returned by createUser()
+                console.log(err);
+                this.props.history.push('/error');    // redirects url to error route
+            });
+    }
+
+    /* cancel function */
+    cancel = () => {
+        this.props.history.push('/');    // redirects to main page of app
+    }
+
     render() {
         const {
             firstName,
@@ -79,61 +149,7 @@ class UserSignUp extends Component {
             </div>
         );
     }
-
-    /* handles state change */
-    change = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-
-        this.setState(() => {
-            return {
-                [name]: value
-            };
-        });
-    }
-
-    /* submit function that creates a new user and sends their credentials to the Express server */
-    submit = () => {
-        const { context } = this.props;
-        const {
-            firstName,
-            lastName,
-            emailAddress,
-            password,
-            confirmPassword
-        } = this.state;
-
-        /* creates user */
-        const user = {
-            firstName,
-            lastName,
-            emailAddress,
-            password,
-            confirmPassword
-        };
-
-        /* returns a promise: either an array of errors (sent from the API if the response is 400), or an empty array (if the response is 201) */
-        context.data.createUser(user)
-            .then(errors => {
-                if (errors.length) {
-                    this.setState({ errors });
-                } else {
-                    context.actions.signIn(emailAddress, password)
-                        .then(() => {
-                            this.props.history.push('/authenticated');
-                        });
-                }
-            })
-            .catch((err) => {        // handles a rejected promise returned by createUser()
-                console.log(err);
-                this.props.history.push('/error');    // redirects url to error route
-            });
-    }
-
-    /* cancel function */
-    cancel = () => {
-        this.props.history.push('/');    // redirects to main page of app
-    }
 }
+
 
 export default UserSignUp;
