@@ -131,10 +131,11 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 140, ../sass/reset.sass */
+/* line 140, ../sass/reset.sass */  /* course matierals list */
 ul,
 ol {
   list-style: none;
+  color: white;
 }
 
 /* line 144, ../sass/reset.sass */
@@ -203,11 +204,11 @@ svg {
 body {
   font-family: "Book Antiqua", Serif;
   background: #fff;
-  background-image: url(./hogwarts.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.15)), url(./hogwarts.jpg);
   background-size: cover;
 }
 
-/* line 13, ../sass/global.sass */ 
+/* line 13, ../sass/global.sass /* top header bar */
 .header {
   background: #3d0d57;  
   padding: 20px 0;
@@ -227,7 +228,7 @@ body {
 }
 /* line 25, ../sass/global.sass */
 .header--logo a:hover {
-  color: #fff;
+  color: #a3508d;
 }
 /* line 27, ../sass/global.sass */
 .header--logo .selected {
@@ -270,21 +271,23 @@ body {
 .actions--bar:after {
   clear: both;
 }
-/* line 50, ../sass/global.sass */
+/* line 50, ../sass/global.sass */ /*return/update/delete button text*/
 .actions--bar .button {
   margin-right: 15px;
+  color: white; 
 }
 
 /* line 57, ../sass/global.sass */
 h1 {
   font-size: 36px;
-  color: #fff;
+  color: #3d0d57;    /* sign in/sign up header color*/
   margin-bottom: 20px;
 }
 
 /* line 61, ../sass/global.sass */
 a {
-  color: #fff;
+  color: #c3a3ff;   /*click here color*/
+  font-weight: bold;
   cursor: pointer;
   text-decoration: none;
   -webkit-transition: color 0.2s;
@@ -297,6 +300,7 @@ a {
 /* line 66, ../sass/global.sass */
 p {
   font-family: "Book Antiqua";
+  color: white;  /*already have an account color*/
   font-size: 17px;
   margin-bottom: 30px;
 }
@@ -396,9 +400,9 @@ p {
 .course--add--module:hover .course--add--title {
   color: #3d0d57;
 }
-/* line 139, ../sass/global.sass */
-.course--add--module:hover .add {
-  fill: #444;
+/* line 139, ../sass/global.sass */   /* new course + symbol */
+.course--add--module:hover .add {   
+  fill: #3d0d57;
 }
 /* line 141, ../sass/global.sass */
 .course--add--title {
@@ -428,28 +432,28 @@ p {
 .course--header {
   margin-bottom: 30px;
 }
-/* line 164, ../sass/global.sass */
+/* line 164, ../sass/global.sass */ /* course */
 .course--header .course--label {
   font-size: 18px;
-  color: #999;
+  color: white;
 }
 /* line 167, ../sass/global.sass */
 .course--header .course--title {
   font-size: 48px;
   margin-bottom: 15px;
-  color: #332a40;
+  color: #3d0d57;   /*course title color*/
 }
 /* line 171, ../sass/global.sass */
 .course--header p {
   font-size: 18px;
-  color: #b1a5c4;
+  color: #3d0d57;;
   font-weight: 100;
 }
 /* line 176, ../sass/global.sass */
 .course--title--input {
   font-size: 48px;
   font-weight: bold;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Book Antiqua"; 
 }
 /* line 186, ../sass/global.sass */
 .course--description {
@@ -461,9 +465,9 @@ p {
 }
 /* line 190, ../sass/global.sass */
 .course--description p {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.8;
-  color: #444;
+  color: white;     /*course description color*/
 }
 /* line 195, ../sass/global.sass */
 .course--description ol,
@@ -478,7 +482,7 @@ p {
   border-top: 1px solid #ccc;
   font-size: 16px;
   line-height: 1.8;
-  font-family: "Cousine";
+  font-family: "Book Antiqua"; 
 }
 /* line 2, ../sass/mixins.sass */
 .course--description li:before, .course--description li:after {
@@ -517,7 +521,7 @@ p {
 .course--description h1,
 .course--description h2,
 .course--description h3 {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Book Antiqua"; 
   color: #fff;;
   margin-bottom: 30px;
 }
@@ -536,30 +540,31 @@ p {
 /* line 241, ../sass/global.sass */
 .course--description h4 {
   font-size: 18px;
-  font-weight: 100;
+  font-weight: normal;
   margin: 0 0 10px;
-  color: #999;
+  color: #3d0d57;  
   display: block;
 }
 /* line 287, ../sass/global.sass */
 .course--stats--list h4 {
-  font-family: "Cousine";
+  font-family:  "Book Antiqua"; 
+  font-size: 20px;
   font-weight: 100;
-  color: #999;
-  font-size: 14px;
+  color: white;  /*estimated time and materials title color*/
+  font-weight: bold;
   padding: 0 0 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid #ddd;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 /* line 300, ../sass/global.sass */
 .course--stats--list h3 {
-  font-family: "Work Sans", sans-serif;
-  font-size: 18px;
+  font-family: "Book Antiqua"; 
+  font-size: 20px;
 }
 /* line 303, ../sass/global.sass */
 .course--stats--list > li {
@@ -576,7 +581,7 @@ p {
 }
 /* line 311, ../sass/global.sass */
 .course--time--input {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Book Antiqua"; 
   font-size: 18px;
   font-weight: bold;
   margin: 0;
@@ -598,10 +603,10 @@ textarea {
   font-size: 16px;
   margin: 0 0 20px;
   border: 1px solid #ccc4d8;
-  color: #666;
+  color: #3d0d57;     /*descripton and materials text input color*/
   line-height: 1.8;
   outline: none;
-  font-family: "Cousine";
+  font-family: "Book Antiqua"; 
   box-sizing: border-box;
 }
 /* line 29, ../sass/mixins.sass */
@@ -626,13 +631,13 @@ textarea:-ms-input-placeholder {
 }
 /* line 485, ../sass/global.sass */
 textarea:focus {
-  border-color: #7c689b;
+  border-color:#a3508d; 
 }
 
 /* line 488, ../sass/global.sass */
 input {
   width: 100%;
-  color: #332a40;
+  color: #3d0d57;     /*course title font color*/
   border-radius: 8px;
   border: 1px solid #ccc4d8;
   padding: 15px;
@@ -659,7 +664,7 @@ input:-ms-input-placeholder {
 }
 /* line 500, ../sass/global.sass */
 input:focus {
-  border-color: #7c689b;
+  border-color: #3d0d57;
 }
 
 /* line 29, ../sass/mixins.sass */
@@ -679,12 +684,12 @@ input:focus {
   font-weight: bold;
 }
 
-/* line 507, ../sass/global.sass */
+/* line 507, ../sass/global.sass */   
 .button {
-  background: #7c689b;
+  background: #3d0d57;             /*update/delete button color*/
   color: #fff;
-  font-family: "Work Sans", sans-serif;
-  font-size: 18px;
+  font-family: "Book Antiqua";       /*return/update/delete button font*/
+  font-size: 20px;
   padding: 15px 30px;
   border: 0;
   margin-right: 10px;
@@ -704,14 +709,14 @@ input:focus {
 }
 /* line 522, ../sass/global.sass */
 .button:not(.button-secondary):hover {
-  background: #63537d;
+  background: #a3508d;     /*update/delete button hover*/
 }
 
 /* line 525, ../sass/global.sass */
 .button-secondary {
-  color: #7c689b;
+  color: white;   /*cancel/return button text color*/
   background: none;
-  box-shadow: 0 0 0 2px #7c689b inset;
+  box-shadow: 0 0 0 2px  #3d0d57 inset;   /*cancel/return button border color*/
   -webkit-transition: box-shadow 0.2s, color 0.2s;
   -moz-transition: box-shadow 0.2s, color 0.2s;
   -ms-transition: box-shadow 0.2s, color 0.2s;
@@ -720,8 +725,8 @@ input:focus {
 }
 /* line 530, ../sass/global.sass */
 .button-secondary:hover {
-  color: #63537d;
-  box-shadow: 0 0 0 2px #63537d inset;
+  color: #a3508d;   /*cancel button hover text color*/
+  box-shadow: 0 0 0 2px #a3508d inset;    /*cancel button hover border color*/
 }
 
 /* adds additional padding to the bottom of an element */
@@ -742,11 +747,12 @@ input:focus {
 
 /* styles the validation errors */
 .validation--errors--label {
-  color: #7c689b;
+  color: #3d0d57;     /*validation text color*/
   font-size: 28px;
 }
 .validation-errors ul {
-  color: #7c689b;
+  color: #3d0d57;     /*validation text color*/
+  font-size: 18px;
   padding: 15px 0 40px 10px;
 }
 
