@@ -6,7 +6,7 @@ This project has been styled with a Harry Potter theme, in order to maintain the
 
 User information:
 - Harry Potter | email: `harry@potter.com` | password: `harrypassword`
-- Hermione Granger | email: `hermione@granger.com` | password: `hemionepassword`
+- Hermione Granger | email: `hermione@granger.com` | password: `hermionepassword`
 - Ron Weasley | email: `ron@weasley.com` | password: `ronpassword`
 
 Original user information if `npm run seed` is used:
