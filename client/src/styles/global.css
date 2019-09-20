@@ -131,11 +131,12 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 140, ../sass/reset.sass */  /* course matierals list */
+/* line 140, ../sass/reset.sass */  
 ul,
 ol {
-  list-style: none;
+  list-style: none;   /* course matierals list */
   color: white;
+  font-size: 18px;
 }
 
 /* line 144, ../sass/reset.sass */
@@ -522,7 +523,7 @@ p {
 .course--description h2,
 .course--description h3 {
   font-family: "Book Antiqua"; 
-  color: #fff;;
+  color: #fff;
   margin-bottom: 30px;
 }
 /* line 235, ../sass/global.sass */
@@ -550,7 +551,7 @@ p {
   font-family:  "Book Antiqua"; 
   font-size: 20px;
   font-weight: 100;
-  color: white;  /*estimated time and materials title color*/
+  color: white;      /*estimated time and materials title color*/
   font-weight: bold;
   padding: 0 0 10px;
   margin-bottom: 10px;
